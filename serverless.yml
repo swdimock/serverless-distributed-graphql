@@ -1,0 +1,24 @@
+org: webbuy
+app: webbuy-test-graphql
+service: webbuy-test-graphql
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: dev
+  region: us-west-2
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+plugins:
+  - serverless-bundle
+  - serverless-webpack
+  - serverless-offline

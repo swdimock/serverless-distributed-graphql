@@ -1,9 +1,9 @@
-const {Users} = require('./Users');
-
-const resolvers = {
+module.exports.default = {
     Query: {
-        users: () => Users.all(),
+        users: () => {'test'}, // Users.all(),
+        user: () => {},
+    },
+    Mutation: {
+        addUser: () => {},
     },
 };
-
-module.exports = { resolvers };

@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var path = require("path");
+var graphql_tools_1 = require("graphql-tools");
+var merge_graphql_schemas_1 = require("merge-graphql-schemas");
+var typesArray = merge_graphql_schemas_1.fileLoader(path.join(__dirname, './src/**/type.graphql'));
+var resolversArray = merge_graphql_schemas_1.fileLoader(path.join(__dirname, './src/**/resolvers.*'));
+var typeDefs = merge_graphql_schemas_1.mergeTypes(typesArray);
+var resolvers = merge_graphql_schemas_1.mergeResolvers(resolversArray);
+exports.default = graphql_tools_1.makeExecutableSchema({ typeDefs: typeDefs, resolvers: resolvers });

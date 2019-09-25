@@ -1,5 +1,8 @@
-import path from 'path';
-import { fileLoader, mergeResolvers } from 'merge-graphql-schemas';
+const path = require('path');
+const mergeGraphqlSchemas = require('merge-graphql-schemas');
+const fileLoader = mergeGraphqlSchemas.fileLoader;
+const mergeTypes = mergeGraphqlSchemas.mergeTypes;
 
-const typeDefArray = fileLoader(path.join(__dirname, "./src/**/typeDef.*"));
-export default mergeResolvers(typeDefArray);
+const typesArray = fileLoader(path.join('./src/**/type.graphql'));
+
+module.exports.default = mergeTypes(typesArray, { all: true });

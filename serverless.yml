@@ -19,6 +19,4 @@ functions:
       - http: 'ANY {proxy+}'
 
 plugins:
-  - serverless-bundle
-  - serverless-webpack
   - serverless-offline

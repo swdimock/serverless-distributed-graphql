@@ -9,18 +9,18 @@ var graphql_1 = require("graphql");
 var graphqlHTTP = require("express-graphql");
 var bodyParser = require("body-parser-graphql");
 // Defs
-var index_1 = require("./src/_types/index");
-var index_2 = require("./src/_resolvers/index");
+var schema_1 = require("./src/schema");
 // AWS
 // const lambda = new aws.Lambda({
 //     region: 'us-west-2',
+//     endpoint: 'http://localhost:3001'
 // });
-var schema = graphql_1.buildSchema(index_1.default);
+var schema = graphql_1.buildSchema(schema_1.typeDefs);
 var app = express();
 app.use(bodyParser.graphql());
 app.use('/graphql', graphqlHTTP({
     schema: schema,
-    rootValue: index_2.default,
+    rootValue: schema_1.rootValue,
     graphiql: true,
 }));
 module.exports.handler = serverless(app);

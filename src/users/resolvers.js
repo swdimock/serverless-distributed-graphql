@@ -1,9 +1,7 @@
-module.exports.default = {
-    Query: {
-        users: () => {'test'}, // Users.all(),
-        user: () => {},
-    },
-    Mutation: {
-        addUser: () => {},
-    },
+const Users = require('./data');
+
+module.exports = {
+    // Query
+    users: () => Users,
+    user: () => {},
 };
